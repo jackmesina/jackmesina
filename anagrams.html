@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>anagrams</title>
+  </head>
+  <body>
+    <h1>anagrams</h1>
+    <p>анаграммы</p>
+    <audio src="" controls id="audioPlayer">
+      Sorry, your browswer does not support html5!
+    </audio>
+
+    <ul id="playlist">
+      <li class="current-song"><a href="track 1 album 2.wav">caulk mart b12</li>
+      <li><a href="get rest pain rubs.wav">get rest pain rubs</a></li>
+      <li><a href="liber n1.wav">liber n1</a></li>
+      <li><a href="liber n4.wav">liber n4</a></li>
+      <li><a href="electric 5.wav">lover brands win</a></li>
+      <li><a href="rice celt 7.wav">mehr rot chalice</a></li>
+      <li><a href="rice celt 9.wav">come on reffing</a></li>
+      <li><a href="Electric 10.wav">snus fly dine</a></li>
+      <li><a href="Electric 13 (packed dirt).wav">traded pick</a></li>
+      <li><a href="relic ect 14.wav">a muddy sin</a></li>
+      <li><a href="relic etc 17.wav">android caps chick at lair</a></li>
+      <li><a href="relic etc 18.wav">forth canon rope</a></li>
+      <li><a href="we trieth send in 2.wav">we trieth send in 2</a></li>
+      <li><a href="center thy lot 19 (cry sin).wav">gone mid sheep</a></li>
+      <li><a href="electric 20.wav">damascus talking rail</a></li>
+      <li><a href="lexical by sec.wav">lexical by sec</a></li>
+      <li><a href="458.wav">a tiny bang in black</a></li>
+      <li><a href="unknown blue.wav">unblown nuke</a></li>
+      <li><a href="Squares and Rectangles as Windows.wav">queens glass wand crowed tsarinas</a></li>
+      <li><a href="Tube 1.wav">winter ape sip</a></li>
+      <li><a href="Unfinished Palace.wav">dupe a finnish lace</a></li>
+      <li><a href="Austin and Marseille.wav">a mesina under a still</a></li>
+    </ul>
+    <script src="https://code.jquery.com/jquery-2.2.0.js">
+    </script>
+    <script>
+      audioPlayer();
+      function audioPlayer(){
+        var currentSong = 1;
+        $("#audioPlayer")[0].src = $("#playlist li a")[0];
+        $("#audioPlayer")[0].play();
+        $("#playlist li a").click(function(e){
+          e.preventDefault();
+          $("#audioPlayer")[0].src = this;
+          $("#audioPlayer")[0].play();
+          $("#playlist li").removeClass("current-song");
+          currentSong = $(this).parent().index();
+          $(this).parent().addClass("current-song");
+        });
+
+        $("#audioPlayer")[0].addEventListener("ended", function(){
+          currentSong++;
+            if(currentSong == $("#playlist li a").length)
+              currentSong = 1;
+            $("#playlist li").removeClass("current-song");
+            $("#playlist li:eq("+currentSong+")").addClass("current-song");
+            $("#audioPlayer")[0].src = $("#playlist li a")[currentSong].href;
+            $("#audioPlayer")[0].play();
+        });
+      }
+    </script>
+
+    <a href="index.html">home/главная</a>
+    <br />
+    <img src="anagrams.jpg" alt="" />
+    <br />
+  </body>
+</html>
